@@ -1,31 +1,48 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+        <title>reveal.js</title>
 
-		<link rel="stylesheet" href="reveal.js/dist/reset.css">
-		<link rel="stylesheet" href="reveal.js/dist/reveal.css">
-		<link rel="stylesheet" href="reveal.js/dist/theme/white.css" id="theme">
+        <link rel="stylesheet" href="reveal.js/dist/reset.css">
+        <link rel="stylesheet" href="reveal.js/dist/reveal.css">
+        <link rel="stylesheet" href="reveal.js/dist/theme/white.css" id="theme">
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="reveal.js/plugin/highlight/monokai.css" id="highlight-theme">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section><p>hitchhiker's guide to embedded audio</p></section>
-                <section><p>intro</p></section>
-                <section><p>electronics</p></section>
+        <!-- Theme used for syntax highlighted code -->
+        <link rel="stylesheet" href="reveal.js/plugin/highlight/monokai.css" id="highlight-theme">
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section><p>hitchhiker's guide to embedded audio</p></section>
+                <section><p>intro (DON'T PANIC)</p></section>
+                <section><p>electronics (mostly harmless)</p></section>
+                <section><img src="assets/b12n-1962.gif" height="700"></section>
                 <section><p>analogue</p></section>
+                <section><img src="assets/618px-Modern_handbuilt_analogue_synthesizer.jpg" height="700"></section>
                 <section><p>schematics</p></section>
                 <section><p>circuit simulation</p></section>
+                <section>
+                    <p>circuitjs (falstad)</p>
+                    <iframe src="https://www.falstad.com/circuit/circuitjs.html" width="100%" height="600"></iframe></section>
                 <section><p>digital audio circuits</p></section>
+                <section><p>analogue-to-digital converter (ADC)</p></section>
+                <section><p>transport</p></section>
+                <section><p>control</p></section>
+                <section><p>clocks and bits</p></section>
                 <section><p>microcontrollers</p></section>
+                <section><p>power and clocks</p></section>
+                <section><p>high speed signals</p></section>
                 <section><p>datasheets</p></section>
-                <section><p>baremetal programming</p></section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ### baremetal programming
+                        _"We demand rigidly defined areas of doubt and uncertainty!"_
+                    </textarea>
+                    <!-- <p>baremetal programming (knowing where one's towel is)</p> -->
+                </section>
                 <section><p>assembly</p></section>
                 <section><p>c/c++</p></section>
                 <section><p>compilers</p></section>
@@ -35,30 +52,47 @@
                 <section><p>embedded programming</p></section>
                 <section><p>hard real-time</p></section>
                 <section><p>stack overflow</p></section>
-                <section><p>audio programming</p></section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ### audio programming
+                        _“For a moment, nothing happened. Then, after a second or so, nothing continued to happen.”_
+                    </textarea>
+                </section>
                 <section><p>audio buffers</p></section>
                 <section><p>dsp</p></section>
                 <section><p>output</p></section>
                 <section><p>usb</p></section>
                 <section><p>audio</p></section>
-                <section><p>conclusion</p></section>
-			</div>
-		</div>
+                <section data-markdown>
+                    <textarea data-template>
+                        ### conclusion
+                        _"A common mistake that people make when trying to design something completely foolproof is to underestimate the ingenuity of complete fools."_
+                    </textarea>
+                    <!-- <p>conclusion (share and enjoy)</p> -->
+                </section>
+            </div>
+        </div>
 
-		<script src="reveal.js/dist/reveal.js"></script>
-		<script src="reveal.js/plugin/notes/notes.js"></script>
-		<script src="reveal.js/plugin/markdown/markdown.js"></script>
-		<script src="reveal.js/plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+        <script src="reveal.js/dist/reveal.js"></script>
+        <script src="reveal.js/plugin/notes/notes.js"></script>
+        <script src="reveal.js/plugin/markdown/markdown.js"></script>
+        <script src="reveal.js/plugin/highlight/highlight.js"></script>
+        <script>
+            // More info about initialization & config:
+            // - https://revealjs.com/initialization/
+            // - https://revealjs.com/config/
+            Reveal.initialize({
+                hash: true,
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+                // Learn about plugins: https://revealjs.com/plugins/
+                plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+            });
+        </script>
+
+<style>
+    .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+                  text-transform: none;
+		  }
+</style>
+    </body>
 </html>
