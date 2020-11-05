@@ -17,17 +17,150 @@
         <div class="reveal">
             <div class="slides">
                 <section><p>hitchhiker's guide to embedded audio</p></section>
-                <section><p>intro (DON'T PANIC)</p></section>
-                <section><p>electronics (mostly harmless)</p></section>
-                <section><img src="assets/b12n-1962.gif" height="700"></section>
-                <section><p>analogue</p></section>
-                <section><img src="assets/618px-Modern_handbuilt_analogue_synthesizer.jpg" height="700"></section>
+                <section><p>intro - DON'T PANIC</p></section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ### this talk is for ...
+                        - people looking to turn software into hardware
+                        - folks exploring hardware
+                        - hobbyists with a small/no budget
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ### this talk is split into ...
+                        - **electronics** - _mostly harmless_
+                        - **baremetal programming** - _the restaurant at the end of the universe_
+                        - **embedded programming** - _and another thing..._
+                        - **audio programming** - _life, the universe and everything_
+                        - **output** - _so long, and thanks for all the fish_
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ### about me
+                        _"Er, excuse me, who am I?"_
+                    </textarea>
+                </section>
+                <section><img src="assets/cadac-jtype.jpg" height="600"></section>
+                <section><img src="assets/roli-smk.jpg" height="600"></section>
+                <section><img src="assets/NovaNeon.jpg"></iframe></section>
+                <section><img src="assets/novaneon-photo.jpg" height="600"></iframe></section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ### jargon
+                        _"Hey, you sass that hoopy Ford Prefect? There's a frood who really knows where his towel is."_
+                    </textarea>
+                </section>
+                <section><p>nonsense words/phrases</p></section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ### acronyms (even multi-dimentional)
+                        
+                        - VHDL
+                        
+                            &#8593; VHSIC hardware discription language
+                        
+                            &#8593; very high speed integrated circuit
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ### electronics
+                        _"Perhaps I'm old and tired, but I always think that the chances of finding out what really is going on are so absurdly remote that the only thing to do is to say hang the sense of it and just keep yourself occupied."_
+                    </textarea>
+                </section>
+                <section><img src="assets/b12n-1962.gif" height="600"></section>
+                <section>
+                    <p>analogue</p>
+                    <img src="assets/618px-Modern_handbuilt_analogue_synthesizer.jpg" height="600">
+                </section>
+                <section><p>analogue</p><img src="assets/earth.webp" height="600"></section>
+                <section><p>mics/sensors</p><img src="assets/sensor.jpg" height="600"></section>
+                <section><p>faders/pots/inputs/outputs</p><img src="assets/audio.jpg" height="600"></section>
+                <section><p>encoders/buttons?</p><img src="assets/encoders.webp" height="600"></section>
+                <section><p>pure analogue</p></section>
+                <section><img src="assets/b12n-1962.gif" height="600"></section>
+                <section><p>typical input example</p><p>mic amp</p></section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ### basic components
+                        - resistors
+                        - capacitors
+                        - transistors
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ### op amps
+                    </textarea>
+                </section>
+                <section><p>filters</p></section>
+                <section data-markdown>
+                    <textarea data-template>
+                    </textarea>
+                </section>
+                <section><p>power supply</p></section>
+                <section><p>noise</p></section>
+                <section><p>filtering</p></section>
+                <section><p>linear</p></section>
+                <section><p>modern switch-mode</p></section>
+                <section><p>testing</p></section>
+                <section><p>oscilloscopes</p></section>
+                <section><p>audio test equipment</p></section>
+                <section><p>diagnosis</p></section>
+                <!--  -->
                 <section><p>schematics</p></section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ### basic components
+                        - resistors
+                        - capacitors
+                        - transistors
+                        - op amps
+                        - integrated circuits (ICs)
+                    </textarea>
+                </section>
+                <section><p>integrated circuits (ICs)</p></section>
+                <section><p>copper</p></section>
+                <section><p>schematic tools</p></section>
+                <section><p>old school</p></section>
+                <section><p>proprietary behemoths</p></section>
+                <section><p>new free open source tools</p></section>
+                <section><p>printed circuit boards (PCBs)</p></section>
+                <section><p>connection puzzle</p></section>
+                <section><p>layers</p></section>
+                <section><p>hi-speed</p></section>
+                <section><p>differencial pairs</p></section>
+                <section><p>rules and checks</p></section>
+                <section><p>manufacturing specs/constraints</p></section>
+                <section><p>kicad</p></section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ### kicad
+                        - free-to-use
+                        - open source
+                        - actively maintained
+                        - extensible
+                        - youtube vids
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                        ### reference designs
+                        - development kit designs
+                        - individual component minimum/typical connection circuits and layouts
+                    </textarea>
+                </section>
+                <section><p>testing</p></section>
                 <section><p>circuit simulation</p></section>
                 <section>
                     <p>circuitjs (falstad)</p>
-                    <iframe src="https://www.falstad.com/circuit/circuitjs.html" width="100%" height="600"></iframe></section>
+                    <iframe src="https://www.falstad.com/circuit/circuitjs.html" width="100%" height="600"></iframe>
+                </section>
+                <section><p>limitations</p></section>
                 <section><p>digital audio circuits</p></section>
+
                 <section><p>analogue-to-digital converter (ADC)</p></section>
                 <section><p>transport</p></section>
                 <section><p>control</p></section>
