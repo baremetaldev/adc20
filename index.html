@@ -16,45 +16,106 @@
     <body>
         <div class="reveal">
             <div class="slides">
-                <section><p>hitchhiker's guide to embedded audio</p></section>
-                <section><p>intro - DON'T PANIC</p></section>
+                <!-- <section><p>hitchhiker's guide to embedded audio</p></section> -->
+                <section data-background="assets/titlecard.jpg"></section>
                 <section data-markdown>
-                    <textarea data-template>
+                    <textarea data-template data-separator-notes="^Note:">
+                        ### intro
+                        _"DON'T PANIC"_
+
+                        ― Douglas Adams, The Hitchhiker's Guide to the Galaxy (applies to all quotes)
+                        Note: We'll go through the process of creating a digital audio device from a high-level
+                        perspective. I will attempt to show all, or at least most, of the things you'll
+                        want to learn, or skills that you'll want to look for when hiring.
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template data-separator-notes="^Note:">
                         ### this talk is for ...
                         - people looking to turn software into hardware
                         - folks exploring hardware
                         - hobbyists with a small/no budget
+                        Note: Anyone generally interested in embedded.
+                        People looking to turn a successful software product into a real piece of kit.
                     </textarea>
                 </section>
                 <section data-markdown>
-                    <textarea data-template>
+                    <textarea data-template data-separator-notes="^Note:">
                         ### this talk is split into ...
                         - **electronics** - _mostly harmless_
                         - **baremetal programming** - _the restaurant at the end of the universe_
                         - **embedded programming** - _and another thing..._
                         - **audio programming** - _life, the universe and everything_
                         - **output** - _so long, and thanks for all the fish_
+                        Note: Electronics, of course, couple of chapters on programming, and a little about audio outputs.
                     </textarea>
                 </section>
                 <section data-markdown>
-                    <textarea data-template>
-                        ### about me
+                    <textarea data-template data-separator-notes="^Note:">
                         _"Er, excuse me, who am I?"_
+                            
+                        ― Douglas Adams, The Hitchhiker's Guide to the Galaxy
+                        Note: A little about myself and why you should listen to me.
+                        I've been an embedded developer for over a decade in the audio industry. I'm currently working freelance.
                     </textarea>
                 </section>
-                <section><img src="assets/cadac-jtype.jpg" height="600"></section>
-                <section><img src="assets/roli-smk.jpg" height="600"></section>
-                <section><img src="assets/NovaNeon.jpg"></iframe></section>
-                <section><img src="assets/novaneon-photo.jpg" height="600"></iframe></section>
+                <section>
+                    <img src="assets/cadac-jtype.jpg" height="600">
+                    <aside class="notes">I started out at Cadac working on big theatre mixing consoles.</aside>
+                </section>
+                <section>
+                    <img src="assets/roli-smk.jpg" height="600">
+                    <aside class="notes">More recently working at ROLI working on everything from the Seaboard RISE onwards.</aside>
+                </section>
+                <section>
+                    <img src="assets/NovaNeon.jpg">
+                    <aside class="notes">... and I'm a musician, you should check out my band Nova Neon</aside>
+                </section>
+                <section>
+                    <img src="assets/novaneon-photo.jpg" height="600">
+                    <aside class="notes">we've got another recording coming up in december, assuming there is a december</aside>
+                </section>
+                <section data-background-iframe="https://www.youtube.com/embed/0Qig-We5MyA?controls=0&amp;mute=true&amp;autoplay=true&amp;loop=true">
+                    <!-- <video data-autoplay loop muted src="assets/crashsynth.mp4"></video> -->
+                    <!-- https://www.youtube.com/embed/0Qig-We5MyA -->
+                    <aside class="notes">
+                        I've done a couple of other talks in the past.
+                        This one, crash synth, was an ADC lightning talk about a hardware synth that works by modulating how often it crashes.
+                    </aside>
+                </section>
+                <section>blinky
+                    <pre><code data-trim data-noescape><script type="text/template">
+    *reinterpret_cast<unsigned*> (0x4002'1014) = 0x0002'0014;
+    *reinterpret_cast<unsigned*> (0x4002'101c) = 0x0000'0001;
+
+    *reinterpret_cast<unsigned*> (0x4800'0000) = 0xa800'0800;
+    *reinterpret_cast<unsigned*> (0x4800'0020) = 0x0010'0000;
+    *reinterpret_cast<unsigned*> (0x4000'0028) = 0x0000'0f9f;
+    *reinterpret_cast<unsigned*> (0x4000'002c) = 0x0000'03e7;
+    *reinterpret_cast<unsigned*> (0x4000'0034) = 0x0000'03e7;
+    *reinterpret_cast<unsigned*> (0x4000'0020) = 0x0000'0001;
+    *reinterpret_cast<unsigned*> (0x4000'0018) = 0x0000'0038;
+
+    *reinterpret_cast<unsigned*> (0x4000'0000) = 0x0000'0001;
+
+    asm volatile ("wfi");   // 'wait for interrupt' (sleep)
+                    </script></code></pre>
+                    <aside class="notes">
+                        Note: Another talk I did for London C++ meetup, which was all about some of the challenges of writing embedded C++ code.
+                        This code here was a snippet I used to make a point about how silly embedded code can be.
+                        It's my take on a blinky program, which just flashes an LED on a development kit at 1Hz, though this one does so with the CPU asleep.
+                    </aside>
+                </section>
                 <section data-markdown>
-                    <textarea data-template>
+                    <textarea data-template data-separator-notes="^Note:">
                         ### jargon
                         _"Hey, you sass that hoopy Ford Prefect? There's a frood who really knows where his towel is."_
+                        Note: Before we begin, a quick note about jargon.
+                        There may be a fair amount of nonsense words or phrases.
                     </textarea>
                 </section>
-                <section><p>nonsense words/phrases</p></section>
                 <section data-markdown>
-                    <textarea data-template>
+                    <textarea data-template data-separator-notes="^Note:">
                         ### acronyms (even multi-dimentional)
                         
                         - VHDL
@@ -62,28 +123,69 @@
                             &#8593; VHSIC hardware discription language
                         
                             &#8593; very high speed integrated circuit
+                        Note: And an extreme amount of acronyms. Including some arguably time saving multi-dimentional acronyms.
+                        If there's anything that you don't understand, please just ask.
                     </textarea>
                 </section>
                 <section data-markdown>
-                    <textarea data-template>
+                    <textarea data-template data-separator-notes="^Note:">
                         ### electronics
                         _"Perhaps I'm old and tired, but I always think that the chances of finding out what really is going on are so absurdly remote that the only thing to do is to say hang the sense of it and just keep yourself occupied."_
+                        Note: Chapter 1, electronics. I want to talk a little about analogue electronics, schematics and digital circuits.
                     </textarea>
                 </section>
-                <section><img src="assets/b12n-1962.gif" height="600"></section>
+                <!-- <section><img src="assets/b12n-1962.gif" height="600"></section> -->
                 <section>
                     <p>analogue</p>
                     <img src="assets/618px-Modern_handbuilt_analogue_synthesizer.jpg" height="600">
+                    <aside class="notes">
+                        First, what we call the analogue domain. This is where our audio system begins and ends.
+                    </aside>
                 </section>
-                <section><p>analogue</p><img src="assets/earth.webp" height="600"></section>
-                <section><p>mics/sensors</p><img src="assets/sensor.jpg" height="600"></section>
-                <section><p>faders/pots/inputs/outputs</p><img src="assets/audio.jpg" height="600"></section>
-                <section><p>encoders/buttons?</p><img src="assets/encoders.webp" height="600"></section>
-                <section><p>pure analogue</p></section>
-                <section><img src="assets/b12n-1962.gif" height="600"></section>
-                <section><p>typical input example</p><p>mic amp</p></section>
+                <!-- <section>
+                    <p>analogue</p><img src="assets/earth.webp" height="600">
+                    <aside class="notes">
+                        The real world exists in the analogue domain, our electronics will interact with the real world via the analogue domain.
+                    </aside>
+                </section> -->
+                <section>
+                    <p>mics/sensors</p><img src="assets/sensor.jpg" height="600">
+                    <aside class="notes">
+                        We might start out by measuring the outside world.
+                        I'm sure we're all familiar with microphones, converting vibrations in the air into electrical signals.
+                        Or we may have sensors reading electrical signals or temperature.
+                    </aside>
+                </section>
+                <section><p>faders/pots/inputs/outputs</p><img src="assets/audio.jpg" height="600">
+                    <aside class="notes">Also, I've sure most of you have used faders and pots to control your gear. Input and output jacks to wire up your speakers etc.</aside>
+                </section>
+                <section><img src="assets/analogue.svg">
+                    <aside class="notes">
+                        The analogue parts of our system comprise of arguably the most import parts.
+                        Our power supply keeps us ticking, and the efficiency and noise of the power supply effects the whole system.
+                        Analogue filters are our first line of diffence against unwanted signals and side effects.
+                    </aside>
+                </section>
+                <section>
+                    <p>testing & diagnostics</p>
+                    <aside class="notes">Note: It would be amiss of me not to mention how electonics are tested and issues diagnosed.</aside>
+                </section>
+                <section data-background="assets/oscilloscope.jpg">
+                    <aside class="notes">
+                        One tool in the arsenal is the oscillioscope.
+                        Oscilloscopes allow you to directly probe your electronics circuit to inspect and analyse the actual signals.
+                        This is how you can figure out what's really happening in your circuit.
+                        Scopes are very expensive, so if you don't have the budget you can probably hire one,
+                        or you can get USB scopes which don't have a screen. They tend to be a lot cheaper, if not quite as good as the real thing.
+                        Other equipment might include audio signal analysers such as prism sound's dscope or audio precision gear.
+                        Those are industry standard, i.e. expensive, pieces of equipment which you'll likely just want to hire out if/when you need them.
+                    </aside>
+                </section>
+
+                <!-- <section><img src="assets/b12n-1962.gif" height="600"></section> -->
+                <!-- <section><p>typical input example</p><p>mic amp</p></section>
                 <section data-markdown>
-                    <textarea data-template>
+                    <textarea data-template data-separator-notes="^Note:">
                         ### basic components
                         - resistors
                         - capacitors
@@ -91,13 +193,13 @@
                     </textarea>
                 </section>
                 <section data-markdown>
-                    <textarea data-template>
+                    <textarea data-template data-separator-notes="^Note:">
                         ### op amps
                     </textarea>
                 </section>
                 <section><p>filters</p></section>
                 <section data-markdown>
-                    <textarea data-template>
+                    <textarea data-template data-separator-notes="^Note:">
                     </textarea>
                 </section>
                 <section><p>power supply</p></section>
@@ -108,100 +210,405 @@
                 <section><p>testing</p></section>
                 <section><p>oscilloscopes</p></section>
                 <section><p>audio test equipment</p></section>
-                <section><p>diagnosis</p></section>
+                <section><p>diagnosis</p></section> -->
                 <!--  -->
-                <section><p>schematics</p></section>
-                <section data-markdown>
-                    <textarea data-template>
+                <section>
+                    <p>schematics</p>
+                    <aside class="notes">
+                        In order to go any further we need to know the language of electronics and circuits.
+                        Schematics are a visual design language which can describe how our components are connected and give an idea what they'll do.
+                    </aside>
+                </section>
+                <section>
+                    <img src="assets/b12n-1962.gif" height="600">
+                    <aside class="notes">
+                        This is a schematic close to my heart. When I was a teenager, my dad built me a bass amp based on this circuit.
+                        It's the circuit for a classic ampeg b-15. The schematic itself hints at some fairly unusual features.
+                        If you look at channel 2, you can see this input jack feeds into a tube and gets something like a 30db boost.
+                        So before we've touched any controls, we could already be clipping going into the next tube stage.
+                        Terrible thing to do, except that it's one of the reasons why this thing sounds so good, forcing the tube to distort in a most pleasing manor.
+                    </aside>
+                </section>
+                <!-- <section data-markdown>
+                    <textarea data-template data-separator-notes="^Note:">
                         ### basic components
                         - resistors
                         - capacitors
                         - transistors
                         - op amps
                         - integrated circuits (ICs)
+                        Note: All the basic components on a schematic have their own corresponding cymbols
+                    </textarea>
+                </section> -->
+                <section data-background="assets/components.jpg">
+                    <aside class="notes">
+                        All the basic components on a schematic have their own corresponding cymbols.
+                        These are a few of the most common ones you'll see.
+                    </aside>
+                </section>
+                <section>
+                    <p>integrated circuits (ICs)</p>
+                    <img src="assets/integratedcircuit.jpg">
+                    <aside class="notes">
+                        Integrated circuits, or ICs are chips that contains their own circuits,
+                        usually complex circuits designed to do specific jobs, made up of all the components we've seen, plus whatever else is needed to do the job.
+                        This, for example, is power supply IC that takes a 5V input signal and outputs a 3.3V signal,
+                        though as you can see, it requires a few capacitors around it to function correctly.
+                        These capacitors are there to filter unwanted frequencies.
+                        The components themselves are connected by lines, which correspond to the wires and connections you'll need to make to create this circuit.
+                    </aside>
+                </section>
+                <section data-markdown>
+                    <textarea data-template data-separator-notes="^Note:">
+                        ### tooling
+
+                        electronic design automation (EDA)
+                        - gEDA (geda-project.org)
+                        - kiCAD (kicad.org)
+                        Note: To get started with schematics you may want to familiarise yourself with EDA software.
+                        These tools allow you to design not just your circuit, but will take your circuit design and automate the process of creating a PCB.
                     </textarea>
                 </section>
-                <section><p>integrated circuits (ICs)</p></section>
-                <section><p>copper</p></section>
-                <section><p>schematic tools</p></section>
-                <section><p>old school</p></section>
-                <section><p>proprietary behemoths</p></section>
-                <section><p>new free open source tools</p></section>
-                <section><p>printed circuit boards (PCBs)</p></section>
-                <section><p>connection puzzle</p></section>
-                <section><p>layers</p></section>
-                <section><p>hi-speed</p></section>
-                <section><p>differencial pairs</p></section>
-                <section><p>rules and checks</p></section>
-                <section><p>manufacturing specs/constraints</p></section>
-                <section><p>kicad</p></section>
-                <section data-markdown>
-                    <textarea data-template>
+                <section>
+                    <p>printed circuit boards (PCBs)</p>
+                    <img src="assets/pcb.jpg">
+                    <aside class="notes">
+                        Once you've completed your schematic design, each of your components will have a physical footprint along with the connections required.
+                        Your EDA tool will take this and bring it over to a PCB design editor, allowing you to design a circuit board for your design.
+                    </aside>
+                </section>
+                <section data-background-iframe="https://www.youtube.com/embed/FtWm8Mm6ZPY?controls=0&amp;start=6&amp;mute=true&amp;autoplay=true&amp;loop=true">
+                    <aside class="notes">
+                        At this point, you need to layout the shape of your board, place all your component footprints and connect everything up.
+                        This is a timelapse of the connections being layed out on a complex multi-layer board.
+                        I'm not going to go into any details on this as that's a whole talk in itself.
+                    </aside>
+                </section>
+                <section data-background="assets/kicad.jpg" data-markdown>
+                    <textarea data-template data-separator-notes="^Note:">
                         ### kicad
                         - free-to-use
                         - open source
                         - actively maintained
                         - extensible
                         - youtube vids
+                        Note: My EDA tool of choice is Kicad. One thing I really like about kicad is that it's extensible.
+                        If you can write a little python, you can automate a lot of what you need to do. Or you may find someone else has already written a plugin that does what you need.
+                        Another thing is that there are tonnes of good tutorial videos freely available to teach you how to use it and help you with your designs.
                     </textarea>
                 </section>
                 <section data-markdown>
-                    <textarea data-template>
+                    <textarea data-template data-separator-notes="^Note:">
                         ### reference designs
                         - development kit designs
                         - individual component minimum/typical connection circuits and layouts
+                        Note: If I was getting started, I would grab kicad and make use of tutorials and reference designs.
+                        Often dev kits will come with designs and components themselves may come with recommended circuits and PCB layouts.
                     </textarea>
                 </section>
-                <section><p>testing</p></section>
-                <section><p>circuit simulation</p></section>
+                <section>
+                    <p>testing</p>
+                    <aside class="notes">
+                        There are ways to verify your schematic and PCB designs. Your EDA tools will likely be able to check that you've got everything connected up right, assuming you set this up correctly.
+                    </aside>
+                </section>
+                <section>
+                    <p>circuit simulation</p>
+                    <aside class="notes">
+                        You may even want to simulate parts of your circuit, to be sure that, given certain input signals, you'll get the correct result.
+                    </aside>
+                </section>
                 <section>
                     <p>circuitjs (falstad)</p>
                     <iframe src="https://www.falstad.com/circuit/circuitjs.html" width="100%" height="600"></iframe>
+                    <aside class="notes">
+                        Your EDA tool likely has a simulator built-in, but this is an online one which is fun to play around with.
+                        Here you can lay out a simple circuit and look at the expected signals.
+                    </aside>
                 </section>
-                <section><p>limitations</p></section>
-                <section><p>digital audio circuits</p></section>
-
-                <section><p>analogue-to-digital converter (ADC)</p></section>
-                <section><p>transport</p></section>
-                <section><p>control</p></section>
-                <section><p>clocks and bits</p></section>
-                <section><p>microcontrollers</p></section>
-                <section><p>power and clocks</p></section>
-                <section><p>high speed signals</p></section>
-                <section><p>datasheets</p></section>
+                <section>
+                    <p>limitations</p>
+                    <aside class="notes">
+                        Just bare in mind that real components are never perfect,
+                        which means the real thing may not come out quite as the simulation suggests,
+                        but it should give you a good idea of what you're circuit is going to do.
+                    </aside>
+                </section>
+                <section>
+                    <p>digital audio circuits</p>
+                    <aside class="notes">
+                        How do we turn continuous analogue signals into discreet digital values?
+                    </aside>
+                </section>
                 <section data-markdown>
-                    <textarea data-template>
+                    <textarea data-template data-separator-notes="^Note:">
+                        ### analogue-to-digital converter (ADC)
+                        - successive approximation register (SAR)
+                        - sigma-delta modulation
+                        Note: There are two common methods for analogue to digital conversion.
+                        SAR converters are usually what you'd find on microcontrollers and are well suited to reading sensors.
+                        Sigma-delta converters are a continuous, frequency-based algorithm, used commonly for audio.
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template data-separator-notes="^Note:">
+                        ### audio ADCs
+                        - filters
+                        - noise shaping
+                        - dithering
+                        Note: Audio ADCs in particular, have a few tricks up their sleeves.
+                        They'll use filters, because their only interested in audio frequency range.
+                        Noise shaping and dithering are the black magic used to improve conversion accuracy by adding noise back into the system.
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template data-separator-notes="^Note:">
+                        ### transport and control
+                        - inter-IC sound (I²S)
+                        - time division multiplexed audio (TDM)
+                        - control communications (I²C, SPI)
+                        ![](assets/tdm.jpg)
+                        Note: ADC typically communicate their results to a microprocessor or microcontroller.
+                        They'll do this using signals following particular protocols, such as I²S or TDM,
+                        which package the audio into a stream of digital signals that the processor will be able to decode.
+                        Control protocols are typical too, such as I²C, used for ICs to talk to each other.
+                        This diagram shows one of many implementations of TDM audio comms. TDM isn't standardised, so yours may look different.
+                    </textarea>
+                </section>
+                <section>
+                    <p>microcontrollers</p>
+                    <aside class="notes">
+                        A typical embedded audio product will have a microprocessor or a microcontroller
+                        as the brains of the operation. I won't get into microprocessors as they're complex.
+                        Microcontrollers in comparison are simple, have built-in memory, low clock speeds, not crazy powerful, but really low power.
+                        Importantly, they'll be well documented, so easier to work with, especially if you're learning.
+                    </aside>
+                </section>
+                <section data-markdown>
+                    <textarea data-template data-separator-notes="^Note:">
+                        ### μcontrollers
+                        - low-cost dev kits
+                        - reference designs
+                        - peripherals
+                        - datasheets (technical manuals)
+                        Note: If you're working with micro controllers, it's useful to get yourself a dev kit,
+                        and become acquainted with manufacturer supplied reference designs.
+                        Make sure the device you're using has the peripherals you need.
+                        Peripherals are dedicated hardware to do the job you need to do.
+                        For example, if your micro has an I²S peripheral, you'd use it collect the audio from the ADC.
+                        Datasheets are the documentation for the micro and are written an a very technical manor.
+                        Reading them is a skill in itself and will improve with practise.
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template data-separator-notes="^Note:">
                         ### baremetal programming
                         _"We demand rigidly defined areas of doubt and uncertainty!"_
+                        Note: Before I move onto baremetal microcontroller programming,
+                        are there any questions about anything I've covered so far?
+                        We looked at analogue circuits, schematics, kicad, ADCs and ucontrollers.
                     </textarea>
-                    <!-- <p>baremetal programming (knowing where one's towel is)</p> -->
                 </section>
-                <section><p>assembly</p></section>
-                <section><p>c/c++</p></section>
-                <section><p>compilers</p></section>
-                <section><p>building</p></section>
-                <section><p>debugging</p></section>
-                <section><p>peripherals</p></section>
-                <section><p>embedded programming</p></section>
-                <section><p>hard real-time</p></section>
-                <section><p>stack overflow</p></section>
+                <section>
+                    <p>assembly (ASM)</p>
+                    <pre><code>
+                        str     fp, [sp, #-4]!
+                        add     fp, sp, #0
+                        ldr     r3, .L3
+                        ldr     r2, .L3+4
+                        str     r2, [r3]
+                        ldr     r3, .L3+8
+                        mov     r2, #1
+                        str     r2, [r3]
+                        dsb
+                        mov     r3, #1207959552
+                        ldr     r2, .L3+12
+                        ...
+                    </code></pre>
+                    <aside class="notes">
+                        Just as schematics are the language of schematics, assembly is the language of microcontrollers.
+                        Assembly language is a text representation of hardware CPU instructions, codes that the CPU understands.
+                        Different devices have different dialects of assembly, and may have specific instructions.
+                        As a minimum, assembly should be used to initialise the system and create the 'C abstract machine',
+                        the minimum required environment to run C/C++ code.
+                        We need this to get us to the 'main' function that the programmers amongst you will know as a program entry point.
+                    </aside>
+                </section>
                 <section data-markdown>
-                    <textarea data-template>
+                    <textarea data-template data-separator-notes="^Note:">
+                        ### c/c++
+                        - but without exceptions, runtime type information (RTTI) etc
+                        - baremetal == freestanding == no operating system (OS)
+                        Note: Typically, we're not going to program our entire system in assembly.
+                        It's likely that we'll write in a higher-level language such as C/C++, possibly even rust or nim.
+                        We can do this with some caveats. Microcontrollers have limited memory resources, so we'll likely
+                        switch off features that we don't absolutely need. We also don't have the luxury of an OS,
+                        so we'll need to program the hardware directly.
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template data-separator-notes="^Note:">
+                        ### special function registers (SFRs)
+                        ![](assets/sfr.svg)
+                        Note: You may wonder how exactly we can control the hardware from code.
+                        Microcontrollers have special memory locations that are internally connected to hardware.
+                        In this example, we're saving the number 5 to a fictional 4-bit register.
+                        5 in binary is 0101, and each binary value in connected to a hardware switch,
+                        switching certain hardware facilities on or off.
+                        To figure out which memory locations and values you need to write, you'll need to read the datasheet, so best keep it nearby.
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template data-separator-notes="^Note:">
+                        ### tooling
+                        - cross-compilers (GCC, Clang)
+                        - build automation (CMake, Meson)
+                        - testing (throwtheswitch.org)
+                        - visual studio code
+                        Note: We have to cross-compile our microcontroller code, as the compilers themselves can't run on the device.
+                        For this I recommend GCC or Clang, standard open source compilers.
+                        I like meson for build automation, but cmake is the defacto standard for C/C++.
+                        Testing baremetal, cross-compiled systems can be tricky, but check out throw the switch as they have good strategies for this.
+                        I like vscode for editing, building and debugging, though it can be a little awkward to get everything set up.
+                    </textarea>
+                </section>
+                <section>
+                    <p>debugging</p>
+                    <img src="assets/debug.svg">
+                    <aside class="notes">
+                        Debugging our hardware is also a little tricky, but totally possible.
+                        For those of you used to debugging by stepping through your code line-by-line
+                        will be able to do so via this simple setup.
+                        A debug program such as gdb or lldb can run the program on the hardware via a hardware debugger.
+                        The hardware debugger interfaces with a program called openOCD, which serves up the hardware to gdb as if it's any other piece of software.
+                    </aside>
+                </section>
+                <section data-markdown>
+                    <textarea data-template data-separator-notes="^Note:">
+                        ### embedded programming
+                        _"And so the problem remained; lots of people were mean, and most were miserable, even the ones with digital watches."_
+                        Note: Quick recap before we continue. We covered languages, SFRs, tools and debugging.
+                        Any questions?
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template data-separator-notes="^Note:">
+                        ### hard real-time
+                        - latency requirements (time limits)
+                        - memory constraints (space limits)
+                        - determinism
+                        Note: Those of you familiar with audio software programming
+                        can think of hard real-time as being one big audio thread.
+                        We have to be a little careful about what we do as we have real-time
+                        constraints.
+                    </textarea>
+                </section>
+                <section>
+                    <p>interrupts</p>
+                    <aside class="notes">
+                        Interrupts are effectively callbacks triggered by hardware events and signals.
+                        The tricky part is that the hardware signals may need to be serviced within a certain amount of time.
+                        For example, if we've received our audio sample from the ADC via I2S,
+                        we need to save that data to a buffer before the next sample arrives otherwise we'll lose data.
+                        This is what I mean by latency requirements.
+                    </aside>
+                </section>
+                <section>
+                    <p>c/c++ features</p>
+                    <aside class="notes">
+                        Certain features are typically avoided for this reason.
+                        Dynamic memory allocation is one such feature. It's really useful to able
+                        to conjure arbitrary amounts of memory on-the-fly, but in an embedded system,
+                        you may run out of memory, which means such allocations may fail. It can also
+                        be a little too unpredictable.
+                        C++ exceptions are another such feature. They are fast, but consume a lot of memory,
+                        and rely on dynamic allocations.
+                    </aside>
+                </section>
+                <section>
+                    <p>stack overflow</p>
+                    <img src="assets/weird.jfif" height="600">
+                    <aside class="notes">
+                        Weird things happen when you run out of memory.
+                        Your program will probably crash, but it might not, instead it may
+                        just corrupt some other memory being used for something else, which
+                        may still appear valid. This may result in weird, unexpected behaviours.
+                        This is commonly referred to as undefined behaviour, which is something
+                        you should avoid wherever possible.
+                    </aside>
+                </section>
+                <section data-markdown>
+                    <textarea data-template data-separator-notes="^Note:">
                         ### audio programming
                         _“For a moment, nothing happened. Then, after a second or so, nothing continued to happen.”_
+                        Note: Next up, a quick note about audio programming on our embedded system.
                     </textarea>
                 </section>
-                <section><p>audio buffers</p></section>
-                <section><p>dsp</p></section>
-                <section><p>output</p></section>
-                <section><p>usb</p></section>
-                <section><p>audio</p></section>
+                <section>
+                    <p>audio buffer</p>
+                    <img src="assets/buffer.svg">
+                    <aside class="notes">
+                        In this example, the I²S delivers a single audio frame, which consists of a left and a right sample.
+                        It may be inefficient to process the audio right away, or we may simply not have the processing time
+                        to do so. Instead, we'll buffer it up. Typically we'll get a direct memory access (DMA) controller
+                        to do this for us, as it's efficient.
+                        In this case the buffer is filled without any control and has the left and right channels interleaved.
+                    </aside>
+                </section>
+                <section>
+                    <p>digital signal processing (DSP)</p>
+                    <iframe src="https://www.desmos.com/calculator/dnzfajfpym" width="100%" height="600px"></iframe>
+                    <aside class="notes">
+                        Now that we've got the data we're free to do whatever we want with it.
+                        We may mix it with other audio sources, filter it or apply all sorts of effects to it
+                        in much the same way you would in any audio software application.
+                        I've got desmos here because it's a really handy online tool for visualising your
+                        signal processing.
+                    </aside>
+                </section>
                 <section data-markdown>
-                    <textarea data-template>
+                    <textarea data-template data-separator-notes="^Note:">
+                        ### output
+                        _“If they don't keep on exercising their lips, he thought, their brains start working.”_
+                        Note: We've got our data, processed it, given it a delay and some amp modelling.
+                        Now all we need to do it get it out of the confines of our embedded system.
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template data-separator-notes="^Note:">
+                        ### usb
+                        - high speed, differential signals
+                        - specific clock speeds
+                        - examples
+                        - beyondlogic.org/usbnutshell
+                        Note: Our microcontroller may have a USB peripheral, in which case we can both send and
+                        receive audio from a host PC. If you're going to get into USB, make sure you know a little
+                        about high speed, differential signals. USB signals run at high speeds, so your PCB layout
+                        is important. Make use of examples out there on the internet, there are lots.
+                        And check out USB in a nutshell, a really handy online book that explains the inner workings of USB.
+                    </textarea>
+                </section>
+                <section data-background="assets/codec.jpg">
+                    <aside class="notes">
+                        The obvious option is to simply output our audio back out to the analogue domain.
+                        This is a audio CODEC device, featured on a low cost development kit. It has both
+                        audio inputs and audio outputs, both of which interface with a microcontroller.
+                        We could also use an independent digital-to-analogue device which would do the output side only.
+                        This would work in much the same way as our ADC, only flowing in the other direction.
+                    </aside>
+                </section>
+                <section data-markdown>
+                    <textarea data-template data-separator-notes="^Note:">
                         ### conclusion
                         _"A common mistake that people make when trying to design something completely foolproof is to underestimate the ingenuity of complete fools."_
+                        Note: Hopefully some of what I've mentioned will be of some use.
+                        Some final thoughts. If you're starting an embedded audio project like this,
+                        find some low cost development kits that have most or all of the hardware you
+                        think you'll need. They'll serve as both a development platform for you to
+                        write your embedded software, and an example for your own hardware designs.
+                        Also, look around on the internet for tutorials and forums for help. Youtube
+                        has tonnes of useful videos on electronics, dsp and the rest.
                     </textarea>
-                    <!-- <p>conclusion (share and enjoy)</p> -->
                 </section>
             </div>
         </div>
