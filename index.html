@@ -24,8 +24,8 @@
                         _"DON'T PANIC"_
 
                         ― Douglas Adams, The Hitchhiker's Guide to the Galaxy (applies to all quotes)
-                        Note: We'll go through the process of creating a digital audio device from a high-level
-                        perspective. I will attempt to show all, or at least most, of the things you'll
+                        Note: I'd like to go through the process of creating a digital audio device from a high-level
+                        perspective. I will attempt to show most of the things you'll
                         want to learn, or skills that you'll want to look for when hiring.
                     </textarea>
                 </section>
@@ -35,8 +35,10 @@
                         - people looking to turn software into hardware
                         - folks exploring hardware
                         - hobbyists with a small/no budget
-                        Note: Anyone generally interested in embedded.
+                        Note: This talk is for anyone generally interested in embedded systems.
                         People looking to turn a successful software product into a real piece of kit.
+                        And I want to include hobbyists here, so all the tools I'll show are
+                        free to use, I think most of them are open source as well.
                     </textarea>
                 </section>
                 <section data-markdown>
@@ -47,7 +49,7 @@
                         - **embedded programming** - _and another thing..._
                         - **audio programming** - _life, the universe and everything_
                         - **output** - _so long, and thanks for all the fish_
-                        Note: Electronics, of course, couple of chapters on programming, and a little about audio outputs.
+                        Note: I've split my talk into a few chunks. Electronics, of course, couple of chapters on programming, and a little about audio outputs.
                     </textarea>
                 </section>
                 <section data-markdown>
@@ -75,7 +77,7 @@
                     <img src="assets/novaneon-photo.jpg" height="600">
                     <aside class="notes">we've got another recording coming up in december, assuming there is a december</aside>
                 </section>
-                <section data-background-iframe="https://www.youtube.com/embed/0Qig-We5MyA?controls=0&amp;mute=true&amp;autoplay=true&amp;loop=true">
+                <section data-background-iframe="https://www.youtube.com/embed/0Qig-We5MyA?controls=0&amp;mute=true&amp;autoplay=true&amp;playlist=0Qig-We5MyA&amp;loop=1">
                     <!-- <video data-autoplay loop muted src="assets/crashsynth.mp4"></video> -->
                     <!-- https://www.youtube.com/embed/0Qig-We5MyA -->
                     <aside class="notes">
@@ -161,7 +163,7 @@
                 </section>
                 <section><img src="assets/analogue.svg">
                     <aside class="notes">
-                        The analogue parts of our system comprise of arguably the most import parts.
+                        The analogue parts of our system comprise of arguably the most important parts.
                         Our power supply keeps us ticking, and the efficiency and noise of the power supply effects the whole system.
                         Analogue filters are our first line of diffence against unwanted signals and side effects.
                     </aside>
@@ -320,7 +322,7 @@
                 </section>
                 <section>
                     <p>circuitjs (falstad)</p>
-                    <iframe src="https://www.falstad.com/circuit/circuitjs.html" width="100%" height="600"></iframe>
+                    <iframe data-src="https://www.falstad.com/circuit/circuitjs.html" width="100%" height="600"></iframe>
                     <aside class="notes">
                         Your EDA tool likely has a simulator built-in, but this is an online one which is fun to play around with.
                         Here you can lay out a simple circuit and look at the expected signals.
@@ -357,7 +359,7 @@
                         - noise shaping
                         - dithering
                         Note: Audio ADCs in particular, have a few tricks up their sleeves.
-                        They'll use filters, because their only interested in audio frequency range.
+                        They'll use filters, because they're only interested in audio frequency range.
                         Noise shaping and dithering are the black magic used to improve conversion accuracy by adding noise back into the system.
                     </textarea>
                 </section>
@@ -453,7 +455,7 @@
                         Note: You may wonder how exactly we can control the hardware from code.
                         Microcontrollers have special memory locations that are internally connected to hardware.
                         In this example, we're saving the number 5 to a fictional 4-bit register.
-                        5 in binary is 0101, and each binary value in connected to a hardware switch,
+                        5 in binary is 0101, and each binary value is connected to a hardware switch,
                         switching certain hardware facilities on or off.
                         To figure out which memory locations and values you need to write, you'll need to read the datasheet, so best keep it nearby.
                     </textarea>
