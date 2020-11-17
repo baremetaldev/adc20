@@ -507,6 +507,7 @@
                 </section>
                 <section>
                     <p>interrupts</p>
+                    <img src="assets/interrupts.svg">
                     <aside class="notes">
                         Interrupts are effectively callbacks triggered by hardware events and signals.
                         The tricky part is that the hardware signals may need to be serviced within a certain amount of time.
@@ -517,6 +518,7 @@
                 </section>
                 <section>
                     <p>c/c++ features</p>
+                    <img src="assets/memory.svg" height="600">
                     <aside class="notes">
                         Certain features are typically avoided for this reason.
                         Dynamic memory allocation is one such feature. It's really useful to able
@@ -529,14 +531,20 @@
                 </section>
                 <section>
                     <p>stack overflow</p>
-                    <img src="assets/weird.jfif" height="600">
+                    <img src="assets/overflow.svg" height="600">
                     <aside class="notes">
-                        Weird things happen when you run out of memory.
+                        Weird things happen when you run out of memory which is entirely possible in an embedded system.
                         Your program will probably crash, but it might not, instead it may
                         just corrupt some other memory being used for something else, which
-                        may still appear valid. This may result in weird, unexpected behaviours.
+                        may still appear valid and continue running. This may result in weird, unexpected behaviours.
                         This is commonly referred to as undefined behaviour, which is something
                         you should avoid wherever possible.
+                        On a PC running an OS, you're protected against this kind of thing,
+                        not just because you've got GB of memory to use, so the OS can just give
+                        you more memory if you need it; but also because there are safeguards in the memory,
+                        so the OS knows when you've run out of memory before anything can be corrupted.
+                        Your embedded device may not have such provisions, so might not be able to
+                        inform the program that there's a problem.
                     </aside>
                 </section>
                 <section data-markdown>
