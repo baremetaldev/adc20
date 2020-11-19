@@ -1,3 +1,5 @@
+To view the slides, go to https://baremetaldev.github.io/adc20/
+
 # adc20
 Hitchhiker's Guide to Embedded Audio
 
