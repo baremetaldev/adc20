@@ -29,7 +29,7 @@
                         want to learn, or skills that you'll want to look for when hiring.
                     </textarea>
                 </section>
-                <section data-markdown>
+                <!-- <section data-markdown>
                     <textarea data-template data-separator-notes="^Note:">
                         ### this talk is for ...
                         - people looking to turn software into hardware
@@ -40,10 +40,9 @@
                         And I want to include hobbyists here, so all the tools I'll show are
                         free to use, I think most of them are open source as well.
                     </textarea>
-                </section>
+                </section> -->
                 <section data-markdown>
                     <textarea data-template data-separator-notes="^Note:">
-                        ### this talk is split into ...
                         - **electronics** - _mostly harmless_
                         - **baremetal programming** - _the restaurant at the end of the universe_
                         - **embedded programming** - _and another thing..._
@@ -74,12 +73,11 @@
                     <aside class="notes">... and I'm a musician, you should check out my band Nova Neon</aside>
                 </section>
                 <section>
+                    <p>novaneon.com</p>
                     <img src="assets/novaneon-photo.jpg" height="600">
                     <aside class="notes">we've got another recording coming up in december, assuming there is a december</aside>
                 </section>
                 <section data-background-iframe="https://www.youtube.com/embed/0Qig-We5MyA?controls=0&amp;mute=true&amp;autoplay=true&amp;playlist=0Qig-We5MyA&amp;loop=1">
-                    <!-- <video data-autoplay loop muted src="assets/crashsynth.mp4"></video> -->
-                    <!-- https://www.youtube.com/embed/0Qig-We5MyA -->
                     <aside class="notes">
                         I've done a couple of other talks in the past.
                         This one, crash synth, was an ADC lightning talk about a hardware synth that works by modulating how often it crashes.
@@ -103,8 +101,10 @@
     asm volatile ("wfi");   // 'wait for interrupt' (sleep)
                     </script></code></pre>
                     <aside class="notes">
-                        Note: Another talk I did for London C++ meetup, which was all about some of the challenges of writing embedded C++ code.
-                        This code here was a snippet I used to make a point about how silly embedded code can be.
+                        Note: I also did a short talk for London C++ meetup, which was all about some of the challenges of writing embedded C++ code.
+                        Please don't attempt to parse this code right now. The programmers among you might be trying to figure
+                        out what this does, but it's not for human consumption.
+                        This code was a snippet I used to make a point about how silly embedded code can be.
                         It's my take on a blinky program, which just flashes an LED on a development kit at 1Hz, though this one does so with the CPU asleep.
                     </aside>
                 </section>
@@ -118,23 +118,182 @@
                 </section>
                 <section data-markdown>
                     <textarea data-template data-separator-notes="^Note:">
-                        ### acronyms (even multi-dimentional)
+                        ### acronyms (even multi-dimensional)
                         
                         - VHDL
                         
-                            &#8593; VHSIC hardware discription language
+                            &#8593; VHSIC hardware description language
                         
-                            &#8593; very high speed integrated circuit
-                        Note: And an extreme amount of acronyms. Including some arguably time saving multi-dimentional acronyms.
+                            &#8593;&#8593; very high speed integrated circuit
+                        Note: And an extreme amount of acronyms. Including some arguably time saving multi-dimensional acronyms.
                         If there's anything that you don't understand, please just ask.
                     </textarea>
                 </section>
                 <section data-markdown>
                     <textarea data-template data-separator-notes="^Note:">
+                        ![](assets/origin.svg)
+                        Note: A few years ago, I embarked on an ambitious little side project.
+                        I had decided to spend some spare time building a tiny digital hardware synthesiser,
+                        completely from scratch.
+                        I'm sure you've all done something similar.
+                        I imagined it would look something like a usb stick with a headphone socket on it.
+                    </textarea>
+                </section>
+                <section data-markdown data-transition="fade">
+                    <textarea data-template data-separator-notes="^Note:">
+                        ![](assets/origina.svg)
+                        Note: My design started with a microcontroller.
+                    </textarea>
+                </section>
+                <section data-markdown data-transition="fade">
+                    <textarea data-template data-separator-notes="^Note:">
+                        ![](assets/originb.svg)
+                        Note: And I added a digital audio converter with a headphone amp for
+                        my output.
+                    </textarea>
+                </section>
+                <section data-markdown data-transition="fade">
+                    <textarea data-template data-separator-notes="^Note:">
+                        ![](assets/originc.svg)
+                        Note: Then I added usb, so that I could get MIDI control info from a host pc and possibly send audio back.
+                        Along with some basic volume controls so that I didn't destroy my eardrums while testing.
+                        So far, so good, arguably I should have stopped here. But no.
+                        I went a little off the trail and thought, well, what if my synth needs
+                        samples? Maybe it's a granular synth or something.
+                        Where will it store those samples? 
+                    </textarea>
+                </section>
+                <section data-markdown data-transition="fade">
+                    <textarea data-template data-separator-notes="^Note:">
+                        ![](assets/origind.svg)
+                        Note: So I added an SD card slot and a RAM memory expansion.
+                        Getting pretty complicated now, but it's not crazy.
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template data-separator-notes="^Note:">
+                        ![](assets/schematic.jpg)
+
+                        \* not the actual schematic
+                        Note: I then set about creating an electronic schematic.
+                        Ignore this schematic, this is just something I found on the internet.
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template data-separator-notes="^Note:">
+                        ![](assets/pcblayout.png)
+
+                        \* not the actual pcb
+                        Note: ... and laying out a circuit board.
+                    </textarea>
+                </section>
+                <!-- <section data-markdown>
+                    <textarea data-template data-separator-notes="^Note:">
+                        Note: ... soldering all the components.
+                    </textarea>
+                </section> -->
+                <section data-background-iframe="https://www.youtube.com/embed/Y957rQl7cx4?controls=0&amp;start=200&amp;mute=true&amp;autoplay=true&amp;loop=true">
+                    <aside class="notes">
+                        ... soldering all the components.
+                        Again, this isn't my board.
+                        Unfortunately I can't share this project with you, 
+                        but I can share my workflow and some of the knowledge you might need
+                        to do something like this yourself.
+                    </aside>
+                </section>
+                <!-- <section data-markdown>
+                    <textarea data-template data-separator-notes="^Note:">
+                        Note: By the time I was done, and reached the point where
+                        I actually had to program this thing,
+                        I realised that I had missed something important.
+                        Something that could have saved me a lot of time.
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template data-separator-notes="^Note:">
+                        Note: There's a bunch of arduinos, raspberry pis and dev kits that
+                        already have all this working, and at a fraction of the cost that I could
+                        build it myself.
+                        For me, maybe the real reason for doing this project was that it's
+                        fun to do hardware. But if I was going to do a project like this
+                        right now I would do things a little differently.
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template data-separator-notes="^Note:">
+                        Note: I'd grab a dev kit, let's say this ST kit, it has pretty much
+                        the same design as my original. And I'd prototype my synth on here,
+                        making use of all the tools that come with the kid.
+                    </textarea>
+                </section> -->
+                <section>
+                    <p>workflow</p>
+                    <img src="assets/workflow.svg">
+                    <aside class="notes">
+                        Here's an example workflow. This isn't a full workflow, I've
+                        left out the fact that you'll probably do multiple revisions of everything
+                        and the fact that eventually you'll have to do it all again in order to
+                        get a product through manufacturing, but that's for another talk.
+                        You'll probably begin with a basic design or concept, figure out what you want to make.
+                        Then some hardware and firmware prototyping. Here, rather than building something
+                        from scratch, save yourself some pain and use an already working development kit,
+                        or put it together using arduinos or raspberry pis. You can also prototype your
+                        firmware code using library code or code provided by component manufacturers.
+                        This code may or may not make it into your final product, that's up to you.
+                        Once you're happy with your prototype you can get into your proper schematics and
+                        printed circuit board designs. You'll have a head start here as your prototype
+                        hardware will serve as a useful reference.
+                    </aside>
+                </section>
+                <section data-markdown>
+                    <textarea data-template data-separator-notes="^Note:">
+                        ### concept
+                        ![](assets/concept.jpg)
+                        Note: Right, concept. What kind of device shall we build?
+                    </textarea>
+                </section>
+                <section>
+                    <p>audio interface</p>
+                    <img src="assets/audiointerface.svg">
+                    <aside class="notes">
+                        Maybe we want to build an audio interface, perhaps we've located some niche,
+                        like tubes sticking out of the top or maybe there just aren't enough of these around.
+                        We might have microcontroller or a microprocessor at the heart.
+                        An analogue to digital converter bringing audio in,
+                        a digital to analogue converter sending audio back out. A few physical
+                        controls, level controls for example. Along with a USB, or some sort of interface
+                        to a host computer, sending and receiving audio or control data.
+                        Doesn't have to be USB, it could be bluetooth, HDMI whatever.
+                    </aside>
+                </section>
+                <section>
+                    <p>effects pedal</p>
+                    <img src="assets/effectspedal.svg">
+                    <aside class="notes">
+                        Perhaps we want to make an effects pedal. Bit simpler this time
+                        around. We might have audio coming in via an analogue filter into
+                        our processor via a converter. Maybe foot pedals for controls and
+                        the DAC on the output side sending the audio back out.
+                    </aside>
+                </section>
+                <section>
+                    <p>synth</p>
+                    <img src="assets/synth.svg">
+                    <aside class="notes">
+                        Or maybe we just want to make a synth. A bunch of controls, could be
+                        knobs, a touch screen, whatever you like. The processor will generate
+                        our audio and send it out via the DAC.
+                    </aside>
+                </section>
+                <section data-markdown>
+                    <textarea data-template data-separator-notes="^Note:">
                         ### electronics
                         _"Perhaps I'm old and tired, but I always think that the chances of finding out what really is going on are so absurdly remote that the only thing to do is to say hang the sense of it and just keep yourself occupied."_
-                        Note: Chapter 1, electronics. I want to talk a little about analogue electronics, schematics and digital circuits.
+                        Note: I want share a little about analogue electronics, schematics and digital circuits.
                     </textarea>
+                    <aside class="notes">
+
+                    </aside>
                 </section>
                 <!-- <section><img src="assets/b12n-1962.gif" height="600"></section> -->
                 <section>
@@ -165,16 +324,16 @@
                     <aside class="notes">
                         The analogue parts of our system comprise of arguably the most important parts.
                         Our power supply keeps us ticking, and the efficiency and noise of the power supply effects the whole system.
-                        Analogue filters are our first line of diffence against unwanted signals and side effects.
+                        Analogue filters are our first line of difference against unwanted signals and side effects.
                     </aside>
                 </section>
                 <section>
                     <p>testing & diagnostics</p>
-                    <aside class="notes">Note: It would be amiss of me not to mention how electonics are tested and issues diagnosed.</aside>
+                    <aside class="notes">Note: It would be amiss of me not to mention how electronics are tested and issues diagnosed.</aside>
                 </section>
                 <section data-background="assets/oscilloscope.jpg">
                     <aside class="notes">
-                        One tool in the arsenal is the oscillioscope.
+                        One tool in the arsenal is the oscilloscope.
                         Oscilloscopes allow you to directly probe your electronics circuit to inspect and analyse the actual signals.
                         This is how you can figure out what's really happening in your circuit.
                         Scopes are very expensive, so if you don't have the budget you can probably hire one,
@@ -221,16 +380,18 @@
                         Schematics are a visual design language which can describe how our components are connected and give an idea what they'll do.
                     </aside>
                 </section>
-                <section>
+                <!-- <section>
                     <img src="assets/b12n-1962.gif" height="600">
                     <aside class="notes">
                         This is a schematic close to my heart. When I was a teenager, my dad built me a bass amp based on this circuit.
-                        It's the circuit for a classic ampeg b-15. The schematic itself hints at some fairly unusual features.
+                        It's the circuit for a classic ampeg b-15. Don't worry about trying to read or understand
+                        this, you're pretty unlikely to have tubes in your designs.
+                        The schematic itself hints at some fairly unusual features.
                         If you look at channel 2, you can see this input jack feeds into a tube and gets something like a 30db boost.
                         So before we've touched any controls, we could already be clipping going into the next tube stage.
                         Terrible thing to do, except that it's one of the reasons why this thing sounds so good, forcing the tube to distort in a most pleasing manor.
                     </aside>
-                </section>
+                </section> -->
                 <!-- <section data-markdown>
                     <textarea data-template data-separator-notes="^Note:">
                         ### basic components
@@ -244,7 +405,7 @@
                 </section> -->
                 <section data-background="assets/components.jpg">
                     <aside class="notes">
-                        All the basic components on a schematic have their own corresponding cymbols.
+                        All the basic components on a schematic have their own corresponding symbols.
                         These are a few of the most common ones you'll see.
                     </aside>
                 </section>
@@ -282,11 +443,11 @@
                 <section data-background-iframe="https://www.youtube.com/embed/FtWm8Mm6ZPY?controls=0&amp;start=6&amp;mute=true&amp;autoplay=true&amp;loop=true">
                     <aside class="notes">
                         At this point, you need to layout the shape of your board, place all your component footprints and connect everything up.
-                        This is a timelapse of the connections being layed out on a complex multi-layer board.
+                        This is a time-lapse of the connections being laid out on a complex multi-layer board.
                         I'm not going to go into any details on this as that's a whole talk in itself.
                     </aside>
                 </section>
-                <section data-background="assets/kicad.jpg" data-markdown>
+                <!-- <section data-background="assets/kicad.jpg" data-markdown>
                     <textarea data-template data-separator-notes="^Note:">
                         ### kicad
                         - free-to-use
@@ -298,7 +459,7 @@
                         If you can write a little python, you can automate a lot of what you need to do. Or you may find someone else has already written a plugin that does what you need.
                         Another thing is that there are tonnes of good tutorial videos freely available to teach you how to use it and help you with your designs.
                     </textarea>
-                </section>
+                </section> -->
                 <section data-markdown>
                     <textarea data-template data-separator-notes="^Note:">
                         ### reference designs
@@ -378,7 +539,21 @@
                     </textarea>
                 </section>
                 <section>
+                    <p>I²S</p>
+                    <img src="assets/i2swiring.svg">
+                    <aside class="notes">
+                        I²S is important here, I mentioned this is how ICs communicate audio.
+                        Here we have 3 signals, sometimes you may see I²S with a 4th signal, which is
+                        a master clock, used for synchronisation.
+                        When the serial clock signal transitions from low to high, the serial data
+                        signal is sampled. The word select effectively says which channel you're reading,
+                        either the left or right. I²S only deals with stereo, though there are alternative
+                        versions with more channels.
+                    </aside>
+                </section>
+                <section>
                     <p>microcontrollers</p>
+                    <img src="assets/arduino.jpg">
                     <aside class="notes">
                         A typical embedded audio product will have a microprocessor or a microcontroller
                         as the brains of the operation. I won't get into microprocessors as they're complex.
@@ -404,11 +579,27 @@
                 </section>
                 <section data-markdown>
                     <textarea data-template data-separator-notes="^Note:">
+                        - EEVblog https://www.youtube.com/user/EEVblog
+                        - Martin K. Schröder https://www.youtube.com/user/mkschreder
+                        Note: Here's some useful youtube channels if you want to learn
+                        more about electronics and embedded design.
+                        EEVblog has tonnes of videos on electronics probably covering every you need.
+                        Martin K. Schröder has some intense full board design videos that go through
+                        the whole process using kicad. And I'm sure there are loads more.
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template data-separator-notes="^Note:">
                         ### baremetal programming
                         _"We demand rigidly defined areas of doubt and uncertainty!"_
                         Note: Before I move onto baremetal microcontroller programming,
                         are there any questions about anything I've covered so far?
                         We looked at analogue circuits, schematics, kicad, ADCs and ucontrollers.
+                        You may wonder why you might need to program baremetal or without an OS.
+                        Absolutely you may not need to write baremetal. You may well be programming
+                        for an embedded linux or a real-time operating system such as freeRTOS.
+                        Either way, it may be useful to know a bit about the baremetal in case you
+                        find yourself having to write a very low level driver.
                     </textarea>
                 </section>
                 <section>
@@ -466,23 +657,46 @@
                         - cross-compilers (GCC, Clang)
                         - build automation (CMake, Meson)
                         - testing (throwtheswitch.org)
-                        - visual studio code
                         Note: We have to cross-compile our microcontroller code, as the compilers themselves can't run on the device.
-                        For this I recommend GCC or Clang, standard open source compilers.
-                        I like meson for build automation, but cmake is the defacto standard for C/C++.
+                        For this I you can use GCC or Clang, standard open source compilers.
+                        Build automation is something you'll have to get to grips with, but normally
+                        example projects will include this.
                         Testing baremetal, cross-compiled systems can be tricky, but check out throw the switch as they have good strategies for this.
-                        I like vscode for editing, building and debugging, though it can be a little awkward to get everything set up.
                     </textarea>
                 </section>
                 <section>
-                    <p>debugging</p>
+                    <p>cross-compiling</p>
+                    <img src="assets/crosscompile.svg">
+                    <aside class="notes">
+                        I said we can't run the compiler directly on our device. Generally this
+                        is true, though if your target is a raspberry pi, you would be able to
+                        compile on the device. However, chances are, it's going to be slow.
+                        Normally, we'll cross compile our code.
+                        The compiler's natural tendency is to compile for the machine that it's running
+                        on. But given the cpu command line option, it will instead generate an executable
+                        that isn't compatible with your development PC, but is compatible with your
+                        target device, in this case a microcontroller with an ARM cortex-m7 CPU.
+                    </aside>
+                </section>
+                <section data-background-iframe="https://godbolt.org/">
+                    <aside class="notes">
+                        [Paste code, set command line option to -mcpu=cortex-m7 and maybe -mthumb]
+                        This is just the code snippet from my c++ talk that I mentioned. Again, don't
+                        worry about reading it or trying to understand it. It's written in a purposefully
+                        obscure way. Hopefully you'll never actually see code like this out there in the wild.
+                        [Switch between compilers.]
+                    </aside>
+                </section>
+                <section>
+                    <p>programming & debugging</p>
                     <img src="assets/debug.svg">
                     <aside class="notes">
-                        Debugging our hardware is also a little tricky, but totally possible.
+                        Programming and debugging our hardware is also a little tricky.
+                        We've compiled code for our target processor, we can't run it locally, so we have to run it remotely.
                         For those of you used to debugging by stepping through your code line-by-line
                         will be able to do so via this simple setup.
                         A debug program such as gdb or lldb can run the program on the hardware via a hardware debugger.
-                        The hardware debugger interfaces with a program called openOCD, which serves up the hardware to gdb as if it's any other piece of software.
+                        The hardware debugger interfaces with a program such as openOCD, which serves up the hardware to gdb as if it's any other piece of software.
                     </aside>
                 </section>
                 <section data-markdown>
@@ -526,7 +740,7 @@
                         you may run out of memory, which means such allocations may fail. It can also
                         be a little too unpredictable.
                         C++ exceptions are another such feature. They are fast, but consume a lot of memory,
-                        and rely on dynamic allocations.
+                        and rely on dynamic allocations. In this diagram...
                     </aside>
                 </section>
                 <section>
@@ -544,7 +758,7 @@
                         you more memory if you need it; but also because there are safeguards in the memory,
                         so the OS knows when you've run out of memory before anything can be corrupted.
                         Your embedded device may not have such provisions, so might not be able to
-                        inform the program that there's a problem.
+                        inform the program that there's a problem. In this diagram...
                     </aside>
                 </section>
                 <section data-markdown>
@@ -604,10 +818,10 @@
                         This is a audio CODEC device, featured on a low cost development kit. It has both
                         audio inputs and audio outputs, both of which interface with a microcontroller.
                         We could also use an independent digital-to-analogue device which would do the output side only.
-                        This would work in much the same way as our ADC, only flowing in the other direction.
+                        This would work in much the same way as our ADC, only flowing in the other direction. In this schematic...
                     </aside>
                 </section>
-                <section data-markdown>
+                <!-- <section data-markdown>
                     <textarea data-template data-separator-notes="^Note:">
                         ### conclusion
                         _"A common mistake that people make when trying to design something completely foolproof is to underestimate the ingenuity of complete fools."_
@@ -619,6 +833,40 @@
                         Also, look around on the internet for tutorials and forums for help. Youtube
                         has tonnes of useful videos on electronics, dsp and the rest.
                     </textarea>
+                </section> -->
+                <section data-markdown>
+                    <textarea data-template data-separator-notes="^Note:">
+                        ### conclusion
+                        _"A common mistake that people make when trying to design something completely foolproof is to underestimate the ingenuity of complete fools."_
+                        Note: Hopefully some of what I've mentioned will be of some use.
+                        Some final thoughts.
+                    </textarea>
+                </section>
+                <section data-markdown>
+                    <textarea data-template data-separator-notes="^Note:">
+                        ![](assets/origind.svg)
+                        Note: At the beginning of the talk I mentioned my old usb synth design.
+                    </textarea>
+                </section>
+                <section data-background-image="assets/devkit.jpg">
+                    <!--  -->
+                    <aside class="notes">
+                        It turns out there is a $50 dev kit that has all of the hardware on that design and more.
+                        This is just one example, I'm sure there are others. But this is the sort
+                        of thing that I would get if I was starting out. Program it with arduino,
+                        or just modify the example programs that it comes with.
+                    </aside>
+                </section>
+                <section>
+                    <p>just do software?</p>
+                    <img src="assets/software.jpg">
+                    <aside class="notes">
+                        Hardware is pretty hard, but great fun. There's a whole 'nother level
+                        beyond what I've talked about which is designing for manufacture which
+                        gets really hairy and can be extremely expensive.
+                        You'll want to be really sure that you need hardware if you're going
+                        to set down this path.
+                    </aside>
                 </section>
                 <section data-markdown>
                     <textarea data-template data-separator-notes="^Note:">
