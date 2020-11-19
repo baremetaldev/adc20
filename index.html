@@ -29,18 +29,6 @@
                         want to learn, or skills that you'll want to look for when hiring.
                     </textarea>
                 </section>
-                <!-- <section data-markdown>
-                    <textarea data-template data-separator-notes="^Note:">
-                        ### this talk is for ...
-                        - people looking to turn software into hardware
-                        - folks exploring hardware
-                        - hobbyists with a small/no budget
-                        Note: This talk is for anyone generally interested in embedded systems.
-                        People looking to turn a successful software product into a real piece of kit.
-                        And I want to include hobbyists here, so all the tools I'll show are
-                        free to use, I think most of them are open source as well.
-                    </textarea>
-                </section> -->
                 <section data-markdown>
                     <textarea data-template data-separator-notes="^Note:">
                         - **electronics** - _mostly harmless_
@@ -54,7 +42,7 @@
                 <section data-markdown>
                     <textarea data-template data-separator-notes="^Note:">
                         _"Er, excuse me, who am I?"_
-                            
+
                         ― Douglas Adams, The Hitchhiker's Guide to the Galaxy
                         Note: A little about myself and why you should listen to me.
                         I've been an embedded developer for over a decade in the audio industry. I'm currently working freelance.
@@ -65,8 +53,8 @@
                     <aside class="notes">I started out at Cadac working on big theatre mixing consoles.</aside>
                 </section>
                 <section>
-                    <img src="assets/roli-smk.jpg" height="600">
-                    <aside class="notes">More recently working at ROLI working on everything from the Seaboard RISE onwards.</aside>
+                    <img src="assets/rise.jpg">
+                    <aside class="notes">More recently working at ROLI working on products such as the Seaboard RISE.</aside>
                 </section>
                 <section>
                     <img src="assets/NovaNeon.jpg">
@@ -119,11 +107,11 @@
                 <section data-markdown>
                     <textarea data-template data-separator-notes="^Note:">
                         ### acronyms (even multi-dimensional)
-                        
+
                         - VHDL
-                        
+
                             &#8593; VHSIC hardware description language
-                        
+
                             &#8593;&#8593; very high speed integrated circuit
                         Note: And an extreme amount of acronyms. Including some arguably time saving multi-dimensional acronyms.
                         If there's anything that you don't understand, please just ask.
@@ -160,7 +148,7 @@
                         So far, so good, arguably I should have stopped here. But no.
                         I went a little off the trail and thought, well, what if my synth needs
                         samples? Maybe it's a granular synth or something.
-                        Where will it store those samples? 
+                        Where will it store those samples?
                     </textarea>
                 </section>
                 <section data-markdown data-transition="fade">
@@ -187,45 +175,15 @@
                         Note: ... and laying out a circuit board.
                     </textarea>
                 </section>
-                <!-- <section data-markdown>
-                    <textarea data-template data-separator-notes="^Note:">
-                        Note: ... soldering all the components.
-                    </textarea>
-                </section> -->
                 <section data-background-iframe="https://www.youtube.com/embed/Y957rQl7cx4?controls=0&amp;start=200&amp;mute=true&amp;autoplay=true&amp;loop=true">
                     <aside class="notes">
                         ... soldering all the components.
                         Again, this isn't my board.
-                        Unfortunately I can't share this project with you, 
+                        Unfortunately I can't share this project with you,
                         but I can share my workflow and some of the knowledge you might need
                         to do something like this yourself.
                     </aside>
                 </section>
-                <!-- <section data-markdown>
-                    <textarea data-template data-separator-notes="^Note:">
-                        Note: By the time I was done, and reached the point where
-                        I actually had to program this thing,
-                        I realised that I had missed something important.
-                        Something that could have saved me a lot of time.
-                    </textarea>
-                </section>
-                <section data-markdown>
-                    <textarea data-template data-separator-notes="^Note:">
-                        Note: There's a bunch of arduinos, raspberry pis and dev kits that
-                        already have all this working, and at a fraction of the cost that I could
-                        build it myself.
-                        For me, maybe the real reason for doing this project was that it's
-                        fun to do hardware. But if I was going to do a project like this
-                        right now I would do things a little differently.
-                    </textarea>
-                </section>
-                <section data-markdown>
-                    <textarea data-template data-separator-notes="^Note:">
-                        Note: I'd grab a dev kit, let's say this ST kit, it has pretty much
-                        the same design as my original. And I'd prototype my synth on here,
-                        making use of all the tools that come with the kid.
-                    </textarea>
-                </section> -->
                 <section>
                     <p>workflow</p>
                     <img src="assets/workflow.svg">
@@ -303,12 +261,6 @@
                         First, what we call the analogue domain. This is where our audio system begins and ends.
                     </aside>
                 </section>
-                <!-- <section>
-                    <p>analogue</p><img src="assets/earth.webp" height="600">
-                    <aside class="notes">
-                        The real world exists in the analogue domain, our electronics will interact with the real world via the analogue domain.
-                    </aside>
-                </section> -->
                 <section>
                     <p>mics/sensors</p><img src="assets/sensor.jpg" height="600">
                     <aside class="notes">
@@ -342,37 +294,6 @@
                         Those are industry standard, i.e. expensive, pieces of equipment which you'll likely just want to hire out if/when you need them.
                     </aside>
                 </section>
-
-                <!-- <section><img src="assets/b12n-1962.gif" height="600"></section> -->
-                <!-- <section><p>typical input example</p><p>mic amp</p></section>
-                <section data-markdown>
-                    <textarea data-template data-separator-notes="^Note:">
-                        ### basic components
-                        - resistors
-                        - capacitors
-                        - transistors
-                    </textarea>
-                </section>
-                <section data-markdown>
-                    <textarea data-template data-separator-notes="^Note:">
-                        ### op amps
-                    </textarea>
-                </section>
-                <section><p>filters</p></section>
-                <section data-markdown>
-                    <textarea data-template data-separator-notes="^Note:">
-                    </textarea>
-                </section>
-                <section><p>power supply</p></section>
-                <section><p>noise</p></section>
-                <section><p>filtering</p></section>
-                <section><p>linear</p></section>
-                <section><p>modern switch-mode</p></section>
-                <section><p>testing</p></section>
-                <section><p>oscilloscopes</p></section>
-                <section><p>audio test equipment</p></section>
-                <section><p>diagnosis</p></section> -->
-                <!--  -->
                 <section>
                     <p>schematics</p>
                     <aside class="notes">
@@ -380,29 +301,6 @@
                         Schematics are a visual design language which can describe how our components are connected and give an idea what they'll do.
                     </aside>
                 </section>
-                <!-- <section>
-                    <img src="assets/b12n-1962.gif" height="600">
-                    <aside class="notes">
-                        This is a schematic close to my heart. When I was a teenager, my dad built me a bass amp based on this circuit.
-                        It's the circuit for a classic ampeg b-15. Don't worry about trying to read or understand
-                        this, you're pretty unlikely to have tubes in your designs.
-                        The schematic itself hints at some fairly unusual features.
-                        If you look at channel 2, you can see this input jack feeds into a tube and gets something like a 30db boost.
-                        So before we've touched any controls, we could already be clipping going into the next tube stage.
-                        Terrible thing to do, except that it's one of the reasons why this thing sounds so good, forcing the tube to distort in a most pleasing manor.
-                    </aside>
-                </section> -->
-                <!-- <section data-markdown>
-                    <textarea data-template data-separator-notes="^Note:">
-                        ### basic components
-                        - resistors
-                        - capacitors
-                        - transistors
-                        - op amps
-                        - integrated circuits (ICs)
-                        Note: All the basic components on a schematic have their own corresponding cymbols
-                    </textarea>
-                </section> -->
                 <section data-background="assets/components.jpg">
                     <aside class="notes">
                         All the basic components on a schematic have their own corresponding symbols.
@@ -821,19 +719,6 @@
                         This would work in much the same way as our ADC, only flowing in the other direction. In this schematic...
                     </aside>
                 </section>
-                <!-- <section data-markdown>
-                    <textarea data-template data-separator-notes="^Note:">
-                        ### conclusion
-                        _"A common mistake that people make when trying to design something completely foolproof is to underestimate the ingenuity of complete fools."_
-                        Note: Hopefully some of what I've mentioned will be of some use.
-                        Some final thoughts. If you're starting an embedded audio project like this,
-                        find some low cost development kits that have most or all of the hardware you
-                        think you'll need. They'll serve as both a development platform for you to
-                        write your embedded software, and an example for your own hardware designs.
-                        Also, look around on the internet for tutorials and forums for help. Youtube
-                        has tonnes of useful videos on electronics, dsp and the rest.
-                    </textarea>
-                </section> -->
                 <section data-markdown>
                     <textarea data-template data-separator-notes="^Note:">
                         ### conclusion
